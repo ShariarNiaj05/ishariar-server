@@ -84,7 +84,7 @@ export const FileUpload = async (
 
   //* Generate r2 file preview url
   const previewURL = generatePreviewFile(
-    r2.experiences.bucketURL as string,
+    r2.Experiences.bucketURL as string,
     BucketName,
     finalResultKey,
   );
