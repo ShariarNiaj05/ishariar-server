@@ -16,8 +16,8 @@ const getAllProjects = catchAsync(async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.log('Request Body:', error);
-    throw new AppError(httpStatus[400], 'Failed to get all projects');
+    throw new AppError(httpStatus.BAD_REQUEST, 'Failed to get all projects');
   }
 });
 
-export const ProjectsController = { createProjects };
+export const ProjectsController = { getAllProjects };
