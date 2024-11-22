@@ -38,10 +38,11 @@ const loginUser = async (payload: TLoginUser) => {
     };
   } else {
     if (payload.password) {
-      const isPasswordMatched = await bcryptJs.compare(
-        payload.password,
-        user.password,
-      );
+      // const isPasswordMatched = await bcryptJs.compare(
+      //   payload.password,
+      //   user.password,
+      // );
+      const isPasswordMatched = payload.password === user.password;
 
       if (!isPasswordMatched) {
         throw new AppError(httpStatus.NOT_FOUND, 'Password Incorrect!');
