@@ -26,36 +26,17 @@ const uploadFileToR2 = async (
   }
 };
 
-const IconFileUploadIntoR2 = (payload: IR2UploadFile): Promise<IR2Response> =>
-  uploadFileToR2(payload, 'icon');
+const ExperienceUploadIntoR2 = (payload: IR2UploadFile): Promise<IR2Response> =>
+  uploadFileToR2(payload, 'Experience');
 
-const DesignTemplateUploadIntoR2 = (
-  payload: IR2UploadFile,
-): Promise<IR2Response> => uploadFileToR2(payload, 'DesignTemplate');
+const ProjectsUploadIntoR2 = (payload: IR2UploadFile): Promise<IR2Response> =>
+  uploadFileToR2(payload, 'Projects');
 
-const VideoTemplateUploadIntoR2 = (
-  payload: IR2UploadFile,
-): Promise<IR2Response> => uploadFileToR2(payload, 'VideoTemplate');
+const SkillsUploadIntoR2 = (payload: IR2UploadFile): Promise<IR2Response> =>
+  uploadFileToR2(payload, 'Skills');
 
-const CourseAndLearningUploadIntoR2 = (
-  payload: IR2UploadFile,
-): Promise<IR2Response> => uploadFileToR2(payload, 'CourseAndLearning');
-
-const StockPhotosUploadIntoR2 = (
-  payload: IR2UploadFile,
-): Promise<IR2Response> => uploadFileToR2(payload, 'StockPhoto');
-
-const SoftwareAndToolsUploadIntoR2 = (
-  payload: IR2UploadFile,
-): Promise<IR2Response> => uploadFileToR2(payload, 'SoftwareAndTool');
-
-const FeedbackFileUploadIntoR2 = (
-  payload: IR2UploadFile,
-): Promise<IR2Response> => uploadFileToR2(payload, 'Feedback');
-
-const BigDescriptionFileUploadIntoR2 = (
-  payload: IR2UploadFile,
-): Promise<IR2Response> => uploadFileToR2(payload, 'Description');
+const BlogsUploadIntoR2 = (payload: IR2UploadFile): Promise<IR2Response> =>
+  uploadFileToR2(payload, 'Blogs');
 
 export const r2StorageUpload = {
   IconFileUploadIntoR2,
