@@ -50,3 +50,12 @@ export const splitFileKey = (uploadResult: IR2Response) => {
   }
   return finalResultKey;
 };
+
+export const generatePreviewFile = (
+  bucketURL: string,
+  BucketName: string,
+  finalResultKey: string,
+) => {
+  const previewURL = `${bucketURL}/${BucketName}/${finalResultKey}`;
+  return previewURL;
+};
