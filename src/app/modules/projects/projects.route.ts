@@ -21,8 +21,6 @@ router.post(
     req.body = JSON.parse(req.body.data);
     return ProjectsController.addProject(req, res, next);
   },
-
-  //   ProjectsController.addProject(req, res, next),
 );
 
 export const ProjectsRoutes = router;
