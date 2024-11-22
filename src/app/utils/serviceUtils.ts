@@ -1,4 +1,5 @@
-import { IR2Response, IUploadFile } from '../interface/file';
+import { ObjectCannedACL, PutObjectCommand } from '@aws-sdk/client-s3';
+import { IR2Response, IR2UploadFile, IUploadFile } from '../interface/file';
 import fs from 'fs';
 
 //* Split fine mimetype and get fist index
@@ -58,4 +59,11 @@ export const generatePreviewFile = (
 ) => {
   const previewURL = `${bucketURL}/${BucketName}/${finalResultKey}`;
   return previewURL;
+};
+
+export const PutObjectPayload = (payload: IR2UploadFile) => {
+  return new PutObjectCommand({
+    ...payload,
+    ACL: payload.ACL as ObjectCannedACL,
+  });
 };
