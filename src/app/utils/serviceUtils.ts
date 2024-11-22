@@ -1,6 +1,8 @@
 import { ObjectCannedACL, PutObjectCommand } from '@aws-sdk/client-s3';
 import { IR2Response, IR2UploadFile, IUploadFile } from '../interface/file';
 import fs from 'fs';
+import { r2StorageUpload } from './fileUploadHelper';
+import { r2 } from '../config/r2-storage';
 
 //* Split fine mimetype and get fist index
 export function getFileType(file: IUploadFile): string {
@@ -75,14 +77,14 @@ export const FileUpload = async (
   //* R2 storage payload data
   const Payload = filePayload(file, BucketName);
 
-  const result = await r2StorageUpload.BigDescriptionFileUploadIntoR2(Payload);
+  const result = await r2StorageUpload.ExperienceUploadIntoR2(Payload);
 
   //* Split key
   const finalResultKey = splitFileKey(result);
 
   //* Generate r2 file preview url
   const previewURL = generatePreviewFile(
-    r2.Description.bucketURL as string,
+    r2.experiences.bucketURL as string,
     BucketName,
     finalResultKey,
   );
