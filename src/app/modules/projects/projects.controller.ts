@@ -55,8 +55,28 @@ const addProject = catchAsync(async (req: Request, res: Response) => {
   }
 });
 
+const updateProject = catchAsync(async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const updatedProject = await ProjectsService.updateProject(id, req.body);
+    if (!updatedProject) {
+      throw new AppError(httpStatus.BAD_REQUEST, 'Project not found');
+    }
+    sendResponse(res, {
+      statusCode: httpStatus.CREATED,
+      success: true,
+      message: 'Projects created successfully',
+      data: updatedProject,
+    });
+  } catch (error) {
+    console.log('Request Body:', error);
+    throw new AppError(httpStatus.BAD_REQUEST, 'Failed to add project');
+  }
+});
+
 export const ProjectsController = {
   getAllProjects,
   getProjectById,
   addProject,
+  updateProject,
 };
