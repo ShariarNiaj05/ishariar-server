@@ -13,11 +13,15 @@ const projectsSchema: Schema = new mongoose.Schema(
     serverLink: { type: String, required: true },
     liveLink: { type: String, required: true },
     sourceCode: { type: String },
+
     mediaLinks: { type: [String], required: true },
     demonstration: { type: String },
   },
   {
     timestamps: true,
+    toJSON: {
+      virtuals: true,
+    },
   },
 );
 
