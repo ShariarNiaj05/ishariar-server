@@ -67,3 +67,34 @@ export const PutObjectPayload = (payload: IR2UploadFile) => {
     ACL: payload.ACL as ObjectCannedACL,
   });
 };
+
+export const FileUpload = async (
+  file: IUploadFile,
+  BucketName: string,
+): Promise<{ result: IR2Response; url: string }> => {
+  //* R2 storage payload data
+  const Payload = filePayload(file, BucketName);
+
+  const result = await r2StorageUpload.BigDescriptionFileUploadIntoR2(Payload);
+
+  //* Split key
+  const finalResultKey = splitFileKey(result);
+
+  //* Generate r2 file preview url
+  const previewURL = generatePreviewFile(
+    r2.Description.bucketURL as string,
+    BucketName,
+    finalResultKey,
+  );
+
+  /*
+   * If Upload file then remove file into local file folder
+   */
+  if (result) {
+    fs.unlinkSync(file.path);
+  }
+  return {
+    result: result,
+    url: previewURL,
+  };
+};
