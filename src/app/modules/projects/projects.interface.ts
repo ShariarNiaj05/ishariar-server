@@ -1,10 +1,13 @@
 export type IProjects = {
-  title: string;
-  company: string;
-  location: string;
-  startDate: Date;
-  endDate?: Date;
+  name: string;
   description: string;
-  responsibilities: string[];
-  keyInitiatives?: string[];
+  techStack: string[];
+  features: string[];
+  role: string;
+  challengesSolved: string[];
+  liveDemo?: string;
+  sourceCode?: string;
+  mediaLinks?: string[];
+  createdAt?: Date;
+  updatedAt?: Date;
 };
