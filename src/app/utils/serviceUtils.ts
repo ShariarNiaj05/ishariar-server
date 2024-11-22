@@ -1,4 +1,4 @@
-import { IUploadFile } from '../interface/file';
+import { IR2Response, IUploadFile } from '../interface/file';
 import fs from 'fs';
 
 //* Split fine mimetype and get fist index
@@ -37,4 +37,16 @@ export const FileUpdatePayload = (
     ACL: 'public-read',
   };
   return Payload;
+};
+
+export const splitFileKey = (uploadResult: IR2Response) => {
+  let finalResultKey;
+  const modifyKey = uploadResult?.Key?.split('/')[1];
+  if (modifyKey) {
+    finalResultKey = modifyKey;
+    uploadResult.Key = modifyKey;
+  } else {
+    finalResultKey = uploadResult?.Key;
+  }
+  return finalResultKey;
 };
