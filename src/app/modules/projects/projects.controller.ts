@@ -46,13 +46,17 @@ const addProject = catchAsync(async (req: Request, res: Response) => {
     sendResponse(res, {
       statusCode: httpStatus.CREATED,
       success: true,
-      message: 'Projects retrieved successfully',
-      data: project,
+      message: 'Projects created successfully',
+      data: newProject,
     });
   } catch (error) {
     console.log('Request Body:', error);
-    throw new AppError(httpStatus.BAD_REQUEST, 'Failed to fetch project');
+    throw new AppError(httpStatus.BAD_REQUEST, 'Failed to add project');
   }
 });
 
-export const ProjectsController = { getAllProjects, getProjectById };
+export const ProjectsController = {
+  getAllProjects,
+  getProjectById,
+  addProject,
+};
