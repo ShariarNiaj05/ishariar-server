@@ -10,7 +10,6 @@ import AppError from '../../errors/AppError';
 
 const loginUser = catchAsync(async (req, res) => {
   const user = await User.findOne({ email: req?.body?.email });
-  console.log('user', user);
   const result = await AuthServices.loginUser(req.body);
   const { refreshToken, accessToken } = result;
 
