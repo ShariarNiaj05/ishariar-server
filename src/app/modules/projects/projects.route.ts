@@ -1,8 +1,8 @@
 import express from 'express';
-import { ExperienceController } from './experience.controller';
+import { ProjectsController } from './projects.controller';
 
 const router = express.Router();
 
-router.post('/add-experience', ExperienceController.createExperience);
+router.post('/add-experience', ProjectsController.createProjects);
 
-export const ExperienceRoutes = router;
+export const ProjectsRoutes = router;

@@ -1,13 +1,13 @@
-import { IExperience } from './projects.interface';
-import { ExperienceModel } from './experience.model';
+import { IProjects } from './projects.interface';
+import { ProjectsModel } from './projects.model';
 
-const createExperienceIntoDB = async (payload: IExperience) => {
+const createProjectsIntoDB = async (payload: IProjects) => {
   try {
-    const newExperience = await ExperienceModel.create(payload);
-    return newExperience;
+    const newProjects = await ProjectsModel.create(payload);
+    return newProjects;
   } catch (error) {
     console.error('Error in create  experience IntoDB:', error);
   }
 };
 
-export const ExperienceService = { createExperienceIntoDB };
+export const ProjectsService = { createProjectsIntoDB };
