@@ -9,7 +9,7 @@ const getAllProjects = catchAsync(async (req: Request, res: Response) => {
   try {
     const projects = await ProjectsService.getAllProjects();
     sendResponse(res, {
-      statusCode: httpStatus.CREATED,
+      statusCode: httpStatus.OK,
       success: true,
       message: 'Projects retrieved successfully',
       data: projects,
@@ -28,6 +28,22 @@ const getProjectById = catchAsync(async (req: Request, res: Response) => {
       throw new AppError(httpStatus.NOT_FOUND, 'Project not found');
     }
     sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Projects retrieved successfully',
+      data: project,
+    });
+  } catch (error) {
+    console.log('Request Body:', error);
+    throw new AppError(httpStatus.BAD_REQUEST, 'Failed to fetch project');
+  }
+});
+
+const addProject = catchAsync(async (req: Request, res: Response) => {
+  try {
+    const newProject = await ProjectsService.addProject(req.body);
+
+    sendResponse(res, {
       statusCode: httpStatus.CREATED,
       success: true,
       message: 'Projects retrieved successfully',
@@ -39,4 +55,4 @@ const getProjectById = catchAsync(async (req: Request, res: Response) => {
   }
 });
 
-export const ProjectsController = { getAllProjects };
+export const ProjectsController = { getAllProjects, getProjectById };
