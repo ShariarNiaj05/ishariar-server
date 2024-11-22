@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Health Check</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      overflow-x: hidden;
+      padding: 0;
+    "
+  >
+    <div
+      class="container"
+      style="
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      "
+    >
+      <h1 style="color: #e74c3c; font-size: 2.5rem; margin-bottom: 10px">
+        Welcome to hell
+      </h1>
+      <h2 style="color: #555; font-size: 1.5rem; margin-bottom: 20px">
+        Detecting Your Network
+      </h2>
+      <h3 style="color: #333; font-size: 1.2rem; margin-top: 10px">
+        Your connection is being analyzed.
+      </h3>
+      <div
+        class="warning-box"
+        style="
+          background-color: #ffcccb;
+          padding: 20px;
+          border-radius: 10px;
+          margin-top: 30px;
+          display: inline-block;
+        "
+      >
+        <p>
+          <strong>Warning:</strong> This server may be vulnerable to intrusion
+          attempts. Your IP is under review for suspicious activity.
+        </p>
+      </div>
+
+      <!-- SVG Spinner Icon -->
+      <div
+        class="spinner"
+        style="
+          animation: spin 3s linear infinite;
+          margin: 30px auto;
+          width: 200px;
+          height: 100px;
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          style="width: 60px; height: 40px; color: #e74c3c"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 12a9 9 0 018.74-8.99m8.26 0A9 9 0 0112 21m0-18v3m0 12v3m8.66-8.66l-2.12-2.12M5.34 5.34L3.22 3.22M21 12h-3m-12 0H3m8.66 8.66l-2.12 2.12m11.78-2.12l-2.12-2.12"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div
+      id="malware-modal"
+      class="modal"
+      style="
+        display: none;
+        position: fixed;
+        z-index: 100;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div
+        class="modal-content"
+        style="
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          width: 90%;
+          max-width: 400px;
+          text-align: center;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        "
+      >
+        <h2 style="color: #e74c3c; margin-bottom: 20px">Malware Detected</h2>
+        <p style="color: #333; font-size: 1.1rem">
+          Your system may be at risk. Leave this site immediately to avoid
+          damage.
+        </p>
+        <button
+          id="leave-site"
+          class="modal-button"
+          style="
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 1rem;
+          "
+        >
+          Leave This Site
+        </button>
+        <button
+          id="cancel-modal"
+          class="modal-button cancel"
+          style="
+            background-color: #555;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            font-size: 1rem;
+          "
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <script src="./../assets/script.js"></script>
+
+    <style>
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </body>
+</html>
