@@ -1,4 +1,4 @@
-export type IExperience = {
+export type IProjects = {
   title: string;
   company: string;
   location: string;
