@@ -6,7 +6,7 @@ const createProjectsIntoDB = async (payload: IProjects) => {
     const newProjects = await ProjectsModel.create(payload);
     return newProjects;
   } catch (error) {
-    console.error('Error in create  experience IntoDB:', error);
+    console.error('Error in create  projects IntoDB:', error);
   }
 };
 

@@ -3,6 +3,6 @@ import { ProjectsController } from './projects.controller';
 
 const router = express.Router();
 
-router.post('/add-experience', ProjectsController.createProjects);
+router.post('/add-projects', ProjectsController.createProjects);
 
 export const ProjectsRoutes = router;
