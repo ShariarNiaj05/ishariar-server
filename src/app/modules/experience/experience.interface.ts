@@ -6,5 +6,5 @@ export type IExperience = {
   endDate?: Date;
   description: string;
   responsibilities: string[];
-  keyInitiatives: string[];
+  keyInitiatives?: string[];
 };
