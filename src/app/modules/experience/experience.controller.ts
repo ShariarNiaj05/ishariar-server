@@ -1,5 +1,7 @@
 import { Request, Response } from 'express';
 import catchAsync from '../../utils/catchAsync';
+import sendResponse from '../../utils/sendResponse';
+import httpStatus from 'http-status';
 
 const createExperience = catchAsync(async (req: Request, res: Response) => {
   const userId = req.user?._id;
@@ -23,4 +25,4 @@ const createExperience = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-export const ExperienceController = {};
+export const ExperienceController = { createExperience };
