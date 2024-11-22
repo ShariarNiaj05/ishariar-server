@@ -15,36 +15,20 @@ export const createS3Client = (path: string) => {
 };
 
 export const r2 = {
-  icon: {
-    bucket: createS3Client('icons'),
-    bucketUrl: config.r2Storage.url.icon,
+  experiences: {
+    bucket: createS3Client('experiences'),
+    bucketUrl: config.r2Storage.url.experiences,
   },
-  DesignTemplate: {
-    bucket: createS3Client('design-templates'),
-    bucketURL: config.r2Storage.url.designTemplate,
+  projects: {
+    bucket: createS3Client('projects'),
+    bucketURL: config.r2Storage.url.projects,
   },
-  CourseAndLearning: {
-    bucket: createS3Client('course-and-learning'),
-    bucketURL: config.r2Storage.url.courseAndLearning,
+  skills: {
+    bucket: createS3Client('skills'),
+    bucketURL: config.r2Storage.url.skills,
   },
-  StockPhoto: {
-    bucket: createS3Client('stock-photos'),
-    bucketURL: config.r2Storage.url.stockPhoto,
-  },
-  SoftwareAndTool: {
-    bucket: createS3Client('software-and-tools'),
-    bucketURL: config.r2Storage.url.softwareAndTools,
-  },
-  Feedback: {
-    bucket: createS3Client('feedback'),
-    bucketURL: config.r2Storage.url.feedbackBucketURL,
-  },
-  Description: {
-    bucket: createS3Client('software-big-description'),
-    bucketURL: config.r2Storage.url.softwareDescriptionURL,
-  },
-  VideoTemplate: {
-    bucket: createS3Client('video-template'),
-    bucketURL: config.r2Storage.url.videoTemplateURL,
+  blog: {
+    bucket: createS3Client('blog'),
+    bucketURL: config.r2Storage.url.blog,
   },
 };
