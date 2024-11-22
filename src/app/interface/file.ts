@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export type IUploadFile = {
   fieldname: string;
   originalname: string;
