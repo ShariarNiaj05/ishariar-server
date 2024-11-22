@@ -18,11 +18,11 @@ const moduleRoutes: TModuleRoutes[] = [
     path: '/auth',
     route: AuthRoutes,
   },
-  /*   {
+  {
     path: '/experiences',
     route: CategoryRoutes,
   },
-  {
+  /* {
     path: '/projects',
     route: CategoryRoutes,
   },
