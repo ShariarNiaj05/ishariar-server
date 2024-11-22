@@ -1,4 +1,4 @@
-export type TExperience = {
+export type IExperience = {
   title: string;
   company: string;
   location: string;
