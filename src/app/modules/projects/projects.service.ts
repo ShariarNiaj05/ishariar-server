@@ -1,13 +1,17 @@
 import { IProjects } from './projects.interface';
 import { ProjectsModel } from './projects.model';
 
-const createProjectsIntoDB = async (payload: IProjects) => {
-  try {
-    const newProjects = await ProjectsModel.create(payload);
-    return newProjects;
-  } catch (error) {
-    console.error('Error in create  projects IntoDB:', error);
-  }
+const getAllProjects = async () => {
+  return await ProjectsModel.find();
 };
 
-export const ProjectsService = { createProjectsIntoDB };
+const getProjectById = async (id: string) => {
+  return await ProjectsModel.findById(id);
+};
+
+const addProject = async (data: IProjects) => {
+  const project = await ProjectsModel.create(data);
+  return project;
+};
+
+export const ProjectsService = { getAllProjects, getProjectById, addProject };
