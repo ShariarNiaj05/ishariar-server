@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { ProjectsController } from './projects.controller';
 import { FileUploadConfig } from '../../config/multer';
 
@@ -14,10 +14,15 @@ router.delete('/projects/:id', ProjectsController.deleteProject);
 router.post(
   '/',
   FileUploadConfig.upload.fields([
-    { name: 'thumbnail' },
-    { name: 'preview-file' },
+    { name: 'mediaLinks' },
+    { name: 'demonstration' },
   ]),
-  ProjectsController.addProject,
+  (req: Request, res: Response, next: NextFunction) => {
+    req.body = JSON.parse(req.body.data);
+    return ProjectsController.addProject(req, res, next);
+  },
+
+  //   ProjectsController.addProject(req, res, next),
 );
 
 export const ProjectsRoutes = router;
