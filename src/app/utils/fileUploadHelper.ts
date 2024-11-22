@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IR2Response, IR2UploadFile, R2BucketKey } from '../interface/file';
+import httpStatus from 'http-status';
 import { r2 } from '../config/r2-storage';
-
-import { StatusCodes } from 'http-status-codes';
-import { PutObjectPayload } from '../utils/utils';
-import ApiError from '../error/apiError';
+import AppError from '../errors/AppError';
+import { IR2Response, IR2UploadFile, R2BucketKey } from '../interface/file';
+import { PutObjectPayload } from './serviceUtils';
 
 const uploadFileToR2 = async (
   payload: IR2UploadFile,
@@ -19,8 +18,8 @@ const uploadFileToR2 = async (
     result.ETag = result.ETag ?? '';
     return result;
   } catch (error) {
-    throw new ApiError(
-      StatusCodes.BAD_REQUEST,
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
       `Error uploading file to ${bucketName}: Error uploading file:`,
     );
   }
@@ -39,12 +38,8 @@ const BlogsUploadIntoR2 = (payload: IR2UploadFile): Promise<IR2Response> =>
   uploadFileToR2(payload, 'Blogs');
 
 export const r2StorageUpload = {
-  IconFileUploadIntoR2,
-  DesignTemplateUploadIntoR2,
-  CourseAndLearningUploadIntoR2,
-  StockPhotosUploadIntoR2,
-  SoftwareAndToolsUploadIntoR2,
-  FeedbackFileUploadIntoR2,
-  BigDescriptionFileUploadIntoR2,
-  VideoTemplateUploadIntoR2,
+  ExperienceUploadIntoR2,
+  ProjectsUploadIntoR2,
+  SkillsUploadIntoR2,
+  BlogsUploadIntoR2,
 };
