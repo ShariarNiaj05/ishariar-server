@@ -134,9 +134,11 @@ const projectsFileFilter = (
   cb: multer.FileFilterCallback,
 ) => {
   let error;
-  if (file.fieldname === 'main-file') {
-    error = validateFile(file, ['.zip', '.mogrt']);
-  } else if (file.fieldname === 'mediaLinks') {
+  // if (file.fieldname === 'main-file') {
+  //   error = validateFile(file, ['.zip', '.mogrt']);
+  // }
+
+  if (file.fieldname === 'mediaLinks') {
     error = validateFile(file, ['.jpg', '.jpeg', '.png', '.svg', '.webp']);
   } else if (file.fieldname === 'demonstration') {
     error = validateFile(file, ['.mp4', '.gif', 'mkv']);
