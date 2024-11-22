@@ -12,4 +12,7 @@ const experienceSchema: Schema<IExperience> = new mongoose.Schema({
   keyInitiatives: { type: [String] },
 });
 
-export const Bid = mongoose.model<IExperience>('Demo', experienceSchema);
+export const ExperienceModel = mongoose.model<IExperience>(
+  'Experience',
+  experienceSchema,
+);
