@@ -18,9 +18,14 @@ const updateProject = async (id: string, data: Partial<IProjects>) => {
   return await ProjectsModel.findByIdAndUpdate(id, data, { new: true });
 };
 
+const deleteProject = async (id: string) => {
+  return await ProjectsModel.findByIdAndDelete(id);
+};
+
 export const ProjectsService = {
   getAllProjects,
   getProjectById,
   addProject,
   updateProject,
+  deleteProject,
 };
