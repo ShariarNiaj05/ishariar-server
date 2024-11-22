@@ -14,4 +14,13 @@ const addProject = async (data: IProjects) => {
   return project;
 };
 
-export const ProjectsService = { getAllProjects, getProjectById, addProject };
+const updateProject = async (id: string, data: Partial<IProjects>) => {
+  return await ProjectsModel.findByIdAndUpdate(id, data, { new: true });
+};
+
+export const ProjectsService = {
+  getAllProjects,
+  getProjectById,
+  addProject,
+  updateProject,
+};
