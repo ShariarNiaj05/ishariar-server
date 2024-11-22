@@ -7,8 +7,9 @@ export type IProjects = {
   challengesSolved: string[];
   clientLink: string;
   serverLink: string;
-  liveDemo?: string;
-  mediaLinks?: string[];
+  liveLink: string;
+  mediaLinks: string[];
+  demonstration?: string;
   createdAt?: Date;
   updatedAt?: Date;
 };
