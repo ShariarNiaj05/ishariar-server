@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IR2Response, IR2UploadFile, R2BucketKey } from '../interface/file';
 import { r2 } from '../config/r2-storage';
 
