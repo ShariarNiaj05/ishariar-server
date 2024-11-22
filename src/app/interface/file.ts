@@ -36,4 +36,4 @@ export type IR2UploadFile = {
   ACL: string;
 };
 
-export type R2BucketKey = 'Experience' | 'Projects' | 'Skills' | 'Blogs';
+export type R2BucketKey = 'Experiences' | 'Projects' | 'Skills' | 'Blogs';

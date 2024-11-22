@@ -26,7 +26,7 @@ const uploadFileToR2 = async (
 };
 
 const ExperienceUploadIntoR2 = (payload: IR2UploadFile): Promise<IR2Response> =>
-  uploadFileToR2(payload, 'Experience');
+  uploadFileToR2(payload, 'Experiences');
 
 const ProjectsUploadIntoR2 = (payload: IR2UploadFile): Promise<IR2Response> =>
   uploadFileToR2(payload, 'Projects');
