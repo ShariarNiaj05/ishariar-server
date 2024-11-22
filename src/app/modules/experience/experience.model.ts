@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
-import { IDemo } from './demo.interface';
+import { IExperience } from './experience.interface';
 
-const demoSchema: Schema<IDemo> = new mongoose.Schema({});
+const experienceSchema: Schema<IExperience> = new mongoose.Schema({});
 
-export const Bid = mongoose.model<IDemo>('Demo', demoSchema);
+export const Bid = mongoose.model<IExperience>('Demo', experienceSchema);
