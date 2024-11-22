@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import { IProjects } from './projects.interface';
 
-const projectsSchema: Schema<IProjects> = new mongoose.Schema(
+const projectsSchema: Schema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     description: { type: String, required: true },
