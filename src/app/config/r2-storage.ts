@@ -15,20 +15,20 @@ export const createS3Client = (path: string) => {
 };
 
 export const r2 = {
-  experiences: {
+  Experiences: {
     bucket: createS3Client('experiences'),
     bucketURL: config.r2Storage.url.experiences,
   },
-  projects: {
+  Projects: {
     bucket: createS3Client('projects'),
     bucketURL: config.r2Storage.url.projects,
   },
-  skills: {
+  Skills: {
     bucket: createS3Client('skills'),
     bucketURL: config.r2Storage.url.skills,
   },
-  blog: {
-    bucket: createS3Client('blog'),
+  Blogs: {
+    bucket: createS3Client('blogs'),
     bucketURL: config.r2Storage.url.blog,
   },
 };

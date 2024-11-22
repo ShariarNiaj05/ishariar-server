@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from 'http-status';
-import { r2 } from '../config/r2-storage';
+// import { r2 } from '../config/r2-storage';
 import AppError from '../errors/AppError';
 import { IR2Response, IR2UploadFile, R2BucketKey } from '../interface/file';
 import { PutObjectPayload } from './serviceUtils';
+import { r2 } from '../config/r2-storage';
 
 const uploadFileToR2 = async (
   payload: IR2UploadFile,
