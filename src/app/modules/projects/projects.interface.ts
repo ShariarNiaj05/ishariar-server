@@ -5,8 +5,9 @@ export type IProjects = {
   features: string[];
   role: string;
   challengesSolved: string[];
+  clientLink: string;
+  serverLink: string;
   liveDemo?: string;
-  sourceCode?: string;
   mediaLinks?: string[];
   createdAt?: Date;
   updatedAt?: Date;
