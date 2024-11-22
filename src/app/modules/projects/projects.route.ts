@@ -18,6 +18,8 @@ router.post(
     { name: 'demonstration' },
   ]),
   (req: Request, res: Response, next: NextFunction) => {
+    console.log('Raw data:', req.body.data);
+
     req.body = JSON.parse(req.body.data);
     return ProjectsController.addProject(req, res, next);
   },
