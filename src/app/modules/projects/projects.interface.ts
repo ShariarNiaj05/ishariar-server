@@ -14,7 +14,10 @@ export type IProjects = {
       key: string;
     },
   ]; //media
-  demonstration?: string; //media
+  demonstration?: {
+    url: string;
+    key: string;
+  }; //media
   createdAt?: Date;
   updatedAt?: Date;
 };
