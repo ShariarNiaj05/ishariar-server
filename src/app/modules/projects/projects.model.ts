@@ -20,7 +20,10 @@ const projectsSchema: Schema = new mongoose.Schema(
         key: { type: String, required: true },
       },
     ],
-    demonstration: { type: String },
+    demonstration: {
+      url: { type: String, required: true },
+      key: { type: String, required: true },
+    },
   },
   {
     timestamps: true,
