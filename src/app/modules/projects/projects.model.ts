@@ -14,7 +14,12 @@ const projectsSchema: Schema = new mongoose.Schema(
     liveLink: { type: String, required: true },
     sourceCode: { type: String },
 
-    mediaLinks: { type: [String], required: true },
+    mediaLinks: [
+      {
+        url: { type: String, required: true },
+        key: { type: String, required: true },
+      },
+    ],
     demonstration: { type: String },
   },
   {
