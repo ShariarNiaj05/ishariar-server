@@ -42,36 +42,3 @@ export const ProjectsFileUploadOrUpdateIntoR2 = async (
     url: previewUrl,
   };
 };
-FileUploadOrUpdateIntoR2 = async (
-  file: IUploadFile,
-  BucketName: string,
-  key?: string,
-): Promise<{ result: IR2Response; url: string }> => {
-  let payload;
-  if (!key) {
-    payload = filePayload(file, BucketName);
-  } else {
-    payload = FileUpdatePayload(file, BucketName, key);
-  }
-  const result = await r2StorageUpload.VideoTemplateUploadIntoR2(payload);
-
-  // split Key
-  const finalResultKey = splitFileKey(result);
-
-  // generate file url
-  const previewUrl = generatePreviewFile(
-    r2.VideoTemplate.bucketURL as string,
-    BucketName,
-    finalResultKey,
-  );
-
-  // remove file from local
-  if (result) {
-    fs.unlinkSync(file.path);
-  }
-
-  return {
-    result: result,
-    url: previewUrl,
-  };
-};
