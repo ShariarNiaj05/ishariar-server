@@ -27,15 +27,19 @@ const addProject = async (req: Request) => {
   }
 
   if (!demonstration) {
-    throw new ApiError(
+    throw new AppError(
       httpStatus.BAD_REQUEST,
-      'No thumbnail has been selected. Please choose a thumbnail to proceed.',
+      'No demonstration has been selected. Please choose a demonstration to proceed.',
     );
   }
 
   // upload to r2 storage
   const { result: mediaLinksResult, url: mediaLinksUrl } =
     await ProjectsFileUploadOrUpdateIntoR2(mediaLinks, 'projects');
+
+  //* image upload to r2 storage
+  const { result: demonstrationResult, url: demonstrationUrl } =
+    await ProjectsFileUploadOrUpdateIntoR2(demonstration, 'video-template');
 
   const project = await ProjectsModel.create(req);
   return project;
