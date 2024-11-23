@@ -8,7 +8,12 @@ export type IProjects = {
   clientLink: string;
   serverLink: string;
   liveLink: string;
-  mediaLinks: string[]; //media
+  mediaLinks: [
+    {
+      url: string;
+      key: string;
+    },
+  ]; //media
   demonstration?: string; //media
   createdAt?: Date;
   updatedAt?: Date;
