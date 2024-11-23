@@ -44,8 +44,16 @@ const addProject = async (req: Request) => {
 
   const uploadData = {
     data,
+    mediaLinks: {
+      url: mediaLinksUrl,
+      key: mediaLinksResult?.Key,
+    },
+    demonstration: {
+      url: demonstrationUrl,
+      key: demonstrationResult?.Key,
+    },
   };
-  const project = await ProjectsModel.create(req);
+  const project = await ProjectsModel.create(uploadData);
   return project;
 };
 
