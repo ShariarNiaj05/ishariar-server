@@ -15,7 +15,8 @@ const getProjectById = async (id: string) => {
 
 const addProject = async (req: Request) => {
   console.log(req.files);
-  const data = JSON.stringify(req.body);
+  const data = JSON.parse(req.body);
+  console.log('data in service', data);
   //@ts-expect-error: possible null error
   const mediaLinks = req.files['mediaLinks']?.[0] ?? null;
   //@ts-expect-error: possible null error
