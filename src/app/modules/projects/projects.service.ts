@@ -21,6 +21,13 @@ const addProject = async (req: Request) => {
       'No mediaLinks has been selected. Please choose a preview file to proceed.',
     );
   }
+  // upload to r2 storage
+  const { result: previewResult, url: previewUrl } =
+    await AuditVideoTemplateHelpers.auditVideoTemplateFileUploadOrUpdateIntoR2(
+      previewFile,
+      'video-template',
+    );
+
   const project = await ProjectsModel.create(req);
   return project;
 };
