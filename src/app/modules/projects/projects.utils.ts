@@ -1,8 +1,11 @@
+import fs from 'fs';
+import { r2 } from '../../config/r2-storage';
 import { IR2Response, IUploadFile } from '../../interface/file';
 import { r2StorageUpload } from '../../utils/fileUploadHelper';
 import {
   filePayload,
   FileUpdatePayload,
+  generatePreviewFile,
   splitFileKey,
 } from '../../utils/serviceUtils';
 
@@ -24,7 +27,7 @@ export const ProjectsFileUploadOrUpdateIntoR2 = async (
 
   // generate file url
   const previewUrl = generatePreviewFile(
-    r2.VideoTemplate.bucketURL as string,
+    r2.Projects.bucketURL as string,
     BucketName,
     finalResultKey,
   );
