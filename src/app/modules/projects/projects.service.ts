@@ -15,7 +15,7 @@ const getProjectById = async (id: string) => {
 
 const addProject = async (req: Request) => {
   console.log(req.files);
-  const data = JSON.stringify(req.body);
+  // const data = JSON.stringify(req.body);
   //@ts-expect-error: possible null error
   const mediaLinks = req.files['mediaLinks']?.[0] ?? null;
   //@ts-expect-error: possible null error
@@ -45,11 +45,21 @@ const addProject = async (req: Request) => {
   console.log({ demonstrationResult, demonstrationUrl });
 
   const uploadData = {
-    data,
-    mediaLinks: {
-      url: mediaLinksUrl,
-      key: mediaLinksResult?.Key,
-    },
+    name: req.body.name,
+    description: req.body.description,
+    techStack: req.body.techStack,
+    features: req.body.features,
+    role: req.body.role,
+    challengesSolved: req.body.challengesSolved,
+    clientLink: req.body.clientLink,
+    serverLink: req.body.serverLink,
+    liveLink: req.body.liveLink,
+    mediaLinks: [
+      {
+        url: mediaLinksUrl,
+        key: mediaLinksResult?.Key,
+      },
+    ],
     demonstration: {
       url: demonstrationUrl,
       key: demonstrationResult?.Key,
