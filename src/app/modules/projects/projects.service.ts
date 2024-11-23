@@ -14,6 +14,7 @@ const getProjectById = async (id: string) => {
 };
 
 const addProject = async (req: Request) => {
+  const data = JSON.stringify(req.body);
   //@ts-expect-error: possible null error
   const mediaLinks = req.files['mediaLinks']?.[0] ?? null;
   //@ts-expect-error: possible null error
@@ -41,6 +42,9 @@ const addProject = async (req: Request) => {
   const { result: demonstrationResult, url: demonstrationUrl } =
     await ProjectsFileUploadOrUpdateIntoR2(demonstration, 'video-template');
 
+  const uploadData = {
+    data,
+  };
   const project = await ProjectsModel.create(req);
   return project;
 };
