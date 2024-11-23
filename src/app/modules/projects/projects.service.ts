@@ -3,6 +3,7 @@ import { IProjects } from './projects.interface';
 import { ProjectsModel } from './projects.model';
 import httpStatus from 'http-status';
 import AppError from '../../errors/AppError';
+import { ProjectsFileUploadOrUpdateIntoR2 } from './projects.utils';
 
 const getAllProjects = async () => {
   return await ProjectsModel.find();
@@ -18,15 +19,12 @@ const addProject = async (req: Request) => {
   if (!mediaLinks) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
-      'No mediaLinks has been selected. Please choose a preview file to proceed.',
+      'No mediaLinks has been selected. Please choose a mediaLinks file to proceed.',
     );
   }
   // upload to r2 storage
-  const { result: previewResult, url: previewUrl } =
-    await AuditVideoTemplateHelpers.auditVideoTemplateFileUploadOrUpdateIntoR2(
-      previewFile,
-      'video-template',
-    );
+  const { result: mediaLinksResult, url: mediaLinksUrl } =
+    await ProjectsFileUploadOrUpdateIntoR2(mediaLinks, 'projects');
 
   const project = await ProjectsModel.create(req);
   return project;
