@@ -16,12 +16,23 @@ const getProjectById = async (id: string) => {
 const addProject = async (req: Request) => {
   //@ts-expect-error: possible null error
   const mediaLinks = req.files['mediaLinks']?.[0] ?? null;
+  //@ts-expect-error: possible null error
+  const demonstration = req.files['demonstration']?.[0] ?? null;
+
   if (!mediaLinks) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
       'No mediaLinks has been selected. Please choose a mediaLinks file to proceed.',
     );
   }
+
+  if (!demonstration) {
+    throw new ApiError(
+      httpStatus.BAD_REQUEST,
+      'No thumbnail has been selected. Please choose a thumbnail to proceed.',
+    );
+  }
+
   // upload to r2 storage
   const { result: mediaLinksResult, url: mediaLinksUrl } =
     await ProjectsFileUploadOrUpdateIntoR2(mediaLinks, 'projects');
