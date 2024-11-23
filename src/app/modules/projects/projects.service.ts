@@ -1,6 +1,8 @@
 import { Request } from 'express';
 import { IProjects } from './projects.interface';
 import { ProjectsModel } from './projects.model';
+import httpStatus from 'http-status';
+import AppError from '../../errors/AppError';
 
 const getAllProjects = async () => {
   return await ProjectsModel.find();
@@ -11,7 +13,15 @@ const getProjectById = async (id: string) => {
 };
 
 const addProject = async (req: Request) => {
-  const project = await ProjectsModel.create(data);
+  //@ts-expect-error: possible null error
+  const mediaLinks = req.files['mediaLinks']?.[0] ?? null;
+  if (!mediaLinks) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      'No mediaLinks has been selected. Please choose a preview file to proceed.',
+    );
+  }
+  const project = await ProjectsModel.create(req);
   return project;
 };
 
