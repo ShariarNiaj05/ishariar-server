@@ -41,7 +41,7 @@ const getProjectById = catchAsync(async (req: Request, res: Response) => {
 
 const addProject = catchAsync(async (req: Request, res: Response) => {
   try {
-    const newProject = await ProjectsService.addProject(req.body);
+    const newProject = await ProjectsService.addProject(req);
 
     sendResponse(res, {
       statusCode: httpStatus.CREATED,
