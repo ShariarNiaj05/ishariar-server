@@ -14,6 +14,7 @@ const getProjectById = async (id: string) => {
 };
 
 const addProject = async (req: Request) => {
+  console.log(req.files);
   const data = JSON.stringify(req.body);
   //@ts-expect-error: possible null error
   const mediaLinks = req.files['mediaLinks']?.[0] ?? null;
@@ -40,7 +41,7 @@ const addProject = async (req: Request) => {
 
   //* image upload to r2 storage
   const { result: demonstrationResult, url: demonstrationUrl } =
-    await ProjectsFileUploadOrUpdateIntoR2(demonstration, 'video-template');
+    await ProjectsFileUploadOrUpdateIntoR2(demonstration, 'projects');
 
   const uploadData = {
     data,
