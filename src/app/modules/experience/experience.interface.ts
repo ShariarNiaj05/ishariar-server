@@ -3,6 +3,7 @@ export type IExperience = {
   company: string;
   location: string;
   startDate: Date;
+  media: string[];
   endDate?: Date;
   description: string;
   responsibilities: string[];
