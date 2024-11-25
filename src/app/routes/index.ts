@@ -3,6 +3,7 @@ import { AuthRoutes } from '../modules/Auth/auth.route';
 import { UserRoutes } from '../modules/User/user.route';
 import { ExperienceRoutes } from '../modules/experience/experience.route';
 import { ProjectsRoutes } from '../modules/projects/projects.route';
+import { SkillsRoutes } from '../modules/skills/skills.route';
 
 type TModuleRoutes = {
   path: string;
@@ -28,11 +29,11 @@ const moduleRoutes: TModuleRoutes[] = [
     path: '/projects',
     route: ProjectsRoutes,
   },
-  /* {
-    path: '/projects',
-    route: CategoryRoutes,
-  },
   {
+    path: '/skills',
+    route: SkillsRoutes,
+  },
+  /*{
     path: '/blogs',
     route: CategoryRoutes,
   },
