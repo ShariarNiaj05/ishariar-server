@@ -9,7 +9,7 @@ import {
   splitFileKey,
 } from '../../utils/serviceUtils';
 
-export const ExperienceFileUploadOrUpdateIntoR2 = async (
+export const SkillsFileUploadOrUpdateIntoR2 = async (
   file: IUploadFile,
   BucketName: string,
   key?: string,
@@ -20,14 +20,14 @@ export const ExperienceFileUploadOrUpdateIntoR2 = async (
   } else {
     payload = FileUpdatePayload(file, BucketName, key);
   }
-  const result = await r2StorageUpload.ExperienceUploadIntoR2(payload);
+  const result = await r2StorageUpload.SkillsUploadIntoR2(payload);
 
   // split Key
   const finalResultKey = splitFileKey(result);
 
   // generate file url
   const previewUrl = generatePreviewFile(
-    r2.Experiences.bucketURL as string,
+    r2.Skills.bucketURL as string,
     BucketName,
     finalResultKey,
   );

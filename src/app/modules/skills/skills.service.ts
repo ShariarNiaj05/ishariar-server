@@ -3,6 +3,7 @@ import { Request } from 'express';
 import { SkillsModel } from './skills.model';
 import httpStatus from 'http-status';
 import AppError from '../../errors/AppError';
+import { SkillsFileUploadOrUpdateIntoR2 } from './skills.utils';
 
 const getSkills = async () => {
   const skills = await SkillsModel.find({});
@@ -22,7 +23,7 @@ const createSkillIntoDB = async (req: Request) => {
     const media = await Promise.all(
       mediaFiles.map(async (file: any) => {
         const { result: mediaResult, url: mediaUrl } =
-          await ExperienceFileUploadOrUpdateIntoR2(file, 'experiences');
+          await SkillsFileUploadOrUpdateIntoR2(file, 'experiences');
 
         return {
           url: mediaUrl,
