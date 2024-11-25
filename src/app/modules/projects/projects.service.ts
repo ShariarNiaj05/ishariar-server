@@ -38,7 +38,7 @@ const addProject = async (req: Request) => {
   const mediaLinks = await Promise.all(
     mediaFiles.map(async (file) => {
       const { result: mediaLinksResult, url: mediaLinksUrl } =
-        await ProjectsFileUploadOrUpdateIntoR2(file, 'experiences');
+        await ProjectsFileUploadOrUpdateIntoR2(file, 'projects');
 
       return {
         url: mediaLinksUrl,
@@ -47,10 +47,6 @@ const addProject = async (req: Request) => {
     }),
   );
 
-  // upload to r2 storage
-  const { result: mediaLinksResult, url: mediaLinksUrl } =
-    await ProjectsFileUploadOrUpdateIntoR2(mediaLinks, 'projects');
-  console.log({ mediaLinksResult, mediaLinksUrl });
   //* image upload to r2 storage
   const { result: demonstrationResult, url: demonstrationUrl } =
     await ProjectsFileUploadOrUpdateIntoR2(demonstration, 'projects');
@@ -66,12 +62,7 @@ const addProject = async (req: Request) => {
     clientLink: req.body.clientLink,
     serverLink: req.body.serverLink,
     liveLink: req.body.liveLink,
-    mediaLinks: [
-      {
-        url: mediaLinksUrl,
-        key: mediaLinksResult?.Key,
-      },
-    ],
+    mediaLinks: mediaLinks,
     demonstration: {
       url: demonstrationUrl,
       key: demonstrationResult?.Key,
