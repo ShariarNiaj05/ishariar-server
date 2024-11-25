@@ -11,6 +11,7 @@ const getSkills = async () => {
 };
 const createSkillIntoDB = async (req: Request) => {
   try {
+    //@ts-expect-error: possible null error
     const mediaFiles = req.files['media'] ?? []; // Handle multiple media files
     if (!mediaFiles.length) {
       throw new AppError(
