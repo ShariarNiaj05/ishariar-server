@@ -20,4 +20,4 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
   return SkillsController.getAllSkills(req, res, next);
 });
 
-export const ExperienceRoutes = router;
+export const SkillsRoutes = router;
