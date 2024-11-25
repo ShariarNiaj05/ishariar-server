@@ -19,7 +19,7 @@ const createExperienceIntoDB = async (req: Request) => {
     // upload to r2 storage
     const { result: mediaResult, url: mediaUrl } =
       await ExperienceFileUploadOrUpdateIntoR2(media, 'experiences');
-
+    console.log({ mediaResult }, { mediaUrl });
     const uploadData = {
       title: req.body.title,
       company: req.body.company,
@@ -29,8 +29,7 @@ const createExperienceIntoDB = async (req: Request) => {
       description: req.body.description,
       responsibilities: req.body.responsibilities,
       keyInitiatives: req.body.keyInitiatives,
-
-      mediaLinks: [
+      media: [
         {
           url: mediaUrl,
           key: mediaResult?.Key,

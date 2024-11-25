@@ -27,7 +27,7 @@ export const ExperienceFileUploadOrUpdateIntoR2 = async (
 
   // generate file url
   const previewUrl = generatePreviewFile(
-    r2.Projects.bucketURL as string,
+    r2.Experiences.bucketURL as string,
     BucketName,
     finalResultKey,
   );
