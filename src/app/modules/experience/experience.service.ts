@@ -7,7 +7,7 @@ import { ExperienceFileUploadOrUpdateIntoR2 } from './experience.utils';
 const createExperienceIntoDB = async (req: Request) => {
   try {
     //@ts-expect-error: possible null error
-    const media = req.files['media']?.[0] ?? null;
+    const media = req.files['media'] ?? null;
 
     if (!media) {
       throw new AppError(
