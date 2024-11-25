@@ -29,4 +29,4 @@ const skillSchema: Schema<ISkill> = new mongoose.Schema(
   },
 );
 
-export const SkillModel = mongoose.model<ISkill>('Skills', skillSchema);
+export const SkillsModel = mongoose.model<ISkill>('Skills', skillSchema);
