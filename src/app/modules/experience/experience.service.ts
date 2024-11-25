@@ -2,11 +2,10 @@ import { Request } from 'express';
 import { ExperienceModel } from './experience.model';
 import httpStatus from 'http-status';
 import AppError from '../../errors/AppError';
+import { ExperienceFileUploadOrUpdateIntoR2 } from './experience.utils';
 
 const createExperienceIntoDB = async (req: Request) => {
   try {
-    const newExperience = await ExperienceModel.create(req);
-
     //@ts-expect-error: possible null error
     const media = req.files['media']?.[0] ?? null;
 
@@ -18,8 +17,8 @@ const createExperienceIntoDB = async (req: Request) => {
     }
 
     // upload to r2 storage
-    const { result: mediaLinksResult, url: mediaLinksUrl } = await (media,
-    'projects');
+    const { result: mediaResult, url: mediaUrl } =
+      await ExperienceFileUploadOrUpdateIntoR2(media, 'experience');
 
     return newExperience;
   } catch (error) {
