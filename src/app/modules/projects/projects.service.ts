@@ -47,7 +47,7 @@ const addProject = async (req: Request) => {
     }),
   );
 
-  //* image upload to r2 storage
+  //* demonstration video upload to r2 storage
   const { result: demonstrationResult, url: demonstrationUrl } =
     await ProjectsFileUploadOrUpdateIntoR2(demonstration, 'projects');
   // console.log({ demonstrationResult, demonstrationUrl });
