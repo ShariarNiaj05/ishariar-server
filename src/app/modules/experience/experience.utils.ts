@@ -20,7 +20,7 @@ export const ExperienceFileUploadOrUpdateIntoR2 = async (
   } else {
     payload = FileUpdatePayload(file, BucketName, key);
   }
-  const result = await r2StorageUpload.ProjectsUploadIntoR2(payload);
+  const result = await r2StorageUpload.ExperienceUploadIntoR2(payload);
 
   // split Key
   const finalResultKey = splitFileKey(result);
