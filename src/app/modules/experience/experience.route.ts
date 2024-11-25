@@ -15,4 +15,6 @@ router.post(
   },
 );
 
+router.get('/', ExperienceController.getExperiences);
+
 export const ExperienceRoutes = router;
