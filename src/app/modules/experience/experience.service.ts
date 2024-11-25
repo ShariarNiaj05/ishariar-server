@@ -18,7 +18,7 @@ const createExperienceIntoDB = async (req: Request) => {
 
     // upload to r2 storage
     const { result: mediaResult, url: mediaUrl } =
-      await ExperienceFileUploadOrUpdateIntoR2(media, 'experience');
+      await ExperienceFileUploadOrUpdateIntoR2(media, 'experiences');
 
     const uploadData = {
       title: req.body.title,
