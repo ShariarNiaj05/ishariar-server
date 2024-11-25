@@ -17,11 +17,11 @@ const addProject = async (req: Request) => {
   console.log(req.files);
   // const data = JSON.stringify(req.body);
   //@ts-expect-error: possible null error
-  const mediaLinks = req.files['mediaLinks']?.[0] ?? null;
+  const mediaFiles = req.files['mediaLinks'] ?? null;
   //@ts-expect-error: possible null error
   const demonstration = req.files['demonstration']?.[0] ?? null;
 
-  if (!mediaLinks) {
+  if (!mediaFiles) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
       'No mediaLinks has been selected. Please choose a mediaLinks file to proceed.',
