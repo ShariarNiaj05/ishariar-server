@@ -1,8 +1,8 @@
 import { Request } from 'express';
-import { ExperienceModel } from './experience.model';
+import { ExperienceModel } from './skills.model';
 import httpStatus from 'http-status';
 import AppError from '../../errors/AppError';
-import { ExperienceFileUploadOrUpdateIntoR2 } from './experience.utils';
+import { ExperienceFileUploadOrUpdateIntoR2 } from './skills.utils';
 
 const createExperienceIntoDB = async (req: Request) => {
   try {

@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
-import { ExperienceService } from './experience.service';
+import { ExperienceService } from './skills.service';
 import AppError from '../../errors/AppError';
 
 const createExperience = catchAsync(async (req: Request, res: Response) => {

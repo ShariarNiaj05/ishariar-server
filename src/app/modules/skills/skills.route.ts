@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { ExperienceController } from './experience.controller';
+import { ExperienceController } from './skills.controller';
 import { FileUploadConfig } from '../../config/multer';
 
 const router = express.Router();
