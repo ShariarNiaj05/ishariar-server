@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { ExperienceController } from './skills.controller';
+import { ExperienceController, SkillsController } from './skills.controller';
 import { FileUploadConfig } from '../../config/multer';
 
 const router = express.Router();
@@ -17,7 +17,7 @@ const router = express.Router();
 
 // GET: Retrieve all skills
 router.get('/', (req: Request, res: Response, next: NextFunction) => {
-  return SkillController.getAllSkills(req, res, next);
+  return SkillsController.getAllSkills(req, res, next);
 });
 
 export const ExperienceRoutes = router;

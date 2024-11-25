@@ -15,4 +15,4 @@ const getAllSkills = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-export const ExperienceController = { getAllSkills };
+export const SkillsController = { getAllSkills };
