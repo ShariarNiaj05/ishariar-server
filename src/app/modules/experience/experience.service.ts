@@ -22,6 +22,36 @@ const createExperienceIntoDB = async (req: Request) => {
 
     const newExperience = await ExperienceModel.create(req);
 
+    const uploadData = {
+      title: string;
+  company: string;
+  location: string;
+  startDate: Date;
+  media: string[];
+  endDate?: Date;
+  description: string;
+  responsibilities: string[];
+      keyInitiatives?: string[];
+      
+
+
+      name: req.body.name,
+      description: req.body.description,
+      techStack: req.body.techStack,
+      features: req.body.features,
+      role: req.body.role,
+      challengesSolved: req.body.challengesSolved,
+      clientLink: req.body.clientLink,
+      serverLink: req.body.serverLink,
+      liveLink: req.body.liveLink,
+      mediaLinks: [
+        {
+          url: mediaUrl,
+          key: mediaResult?.Key,
+        },
+      ],
+      
+    };
     return newExperience;
   } catch (error) {
     console.error('Error in create  experience IntoDB:', error);
