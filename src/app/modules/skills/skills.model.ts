@@ -1,29 +1,32 @@
 import mongoose, { Schema } from 'mongoose';
-import { IExperience } from './skills.interface';
+import { ISkill } from './skills.interface';
 
-const experienceSchema: Schema<IExperience> = new mongoose.Schema(
+const skillSchema: Schema<ISkill> = new mongoose.Schema(
   {
-    title: { type: String, required: true },
-    company: { type: String, required: true },
-    location: { type: String, required: true },
-    startDate: { type: Date, required: true },
-    endDate: { type: Date },
-    description: { type: String, required: true },
-    responsibilities: { type: [String], required: true },
-    keyInitiatives: { type: [String] },
+    name: { type: String, required: true }, // Skill name
+    category: {
+      type: String,
+      enum: [
+        'Language',
+        'Backend',
+        'Frontend',
+        'APIs',
+        'Tools',
+        'Others',
+        'Interpersonal',
+      ],
+      required: true,
+    }, // Enum for predefined categories
     media: [
       {
-        url: { type: String, required: true },
-        key: { type: String, required: true },
+        url: { type: String, required: true }, // Media URL
+        key: { type: String, required: true }, // Media key
       },
-    ],
+    ], // Array of media objects
   },
   {
-    timestamps: true,
+    timestamps: true, // Automatically adds createdAt and updatedAt fields
   },
 );
 
-export const ExperienceModel = mongoose.model<IExperience>(
-  'Experience',
-  experienceSchema,
-);
+export const SkillModel = mongoose.model<ISkill>('Skills', skillSchema);
