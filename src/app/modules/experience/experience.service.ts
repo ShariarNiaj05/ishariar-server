@@ -17,6 +17,10 @@ const createExperienceIntoDB = async (req: Request) => {
       );
     }
 
+    // upload to r2 storage
+    const { result: mediaLinksResult, url: mediaLinksUrl } =
+      await ProjectsFileUploadOrUpdateIntoR2(mediaLinks, 'projects');
+
     return newExperience;
   } catch (error) {
     console.error('Error in create  experience IntoDB:', error);
