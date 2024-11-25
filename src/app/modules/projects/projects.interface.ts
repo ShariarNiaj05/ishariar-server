@@ -1,7 +1,9 @@
+import { Types } from 'mongoose';
+
 export type IProjects = {
   name: string;
   description: string;
-  techStack: string[];
+  techStack: string[] | Types.ObjectId[];
   features: string[];
   role: string;
   challengesSolved: string[];
