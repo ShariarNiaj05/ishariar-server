@@ -23,7 +23,7 @@ const experienceSchema: Schema<IExperience> = new mongoose.Schema(
   },
 );
 
-export const ExperienceModel = mongoose.model<IExperience>(
-  'Experience',
+export const BlogsModel = mongoose.model<IExperience>(
+  'Blogs',
   experienceSchema,
 );
