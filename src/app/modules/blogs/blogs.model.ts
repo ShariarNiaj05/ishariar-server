@@ -1,7 +1,8 @@
 import mongoose, { Schema } from 'mongoose';
 import { IExperience } from './blogs.interface';
+import { IBlog } from '../skills/skills.interface';
 
-const experienceSchema: Schema<IExperience> = new mongoose.Schema(
+const blogSchema: Schema<IBlog> = new mongoose.Schema(
   {
     title: { type: String, required: true },
     company: { type: String, required: true },
@@ -23,7 +24,4 @@ const experienceSchema: Schema<IExperience> = new mongoose.Schema(
   },
 );
 
-export const BlogsModel = mongoose.model<IExperience>(
-  'Blogs',
-  experienceSchema,
-);
+export const BlogsModel = mongoose.model<IExpIBlogerience>('Blogs', blogSchema);
