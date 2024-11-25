@@ -3,17 +3,22 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
 import { ExperienceService } from './experience.service';
+import AppError from '../../errors/AppError';
 
 const createExperience = catchAsync(async (req: Request, res: Response) => {
-  console.log('Request Body:', req.body);
+  try {
+    const newProject = await ExperienceService.createExperienceIntoDB(req);
 
-  const result = await ExperienceService.createExperienceIntoDB(req.body);
-  sendResponse(res, {
-    statusCode: httpStatus.CREATED,
-    success: true,
-    message: 'Experience created successfully',
-    data: result,
-  });
+    sendResponse(res, {
+      statusCode: httpStatus.CREATED,
+      success: true,
+      message: 'Experience created successfully',
+      data: newProject,
+    });
+  } catch (error) {
+    console.log('Request Body:', error);
+    throw new AppError(httpStatus.BAD_REQUEST, 'Failed to add Experience');
+  }
 });
 
 export const ExperienceController = { createExperience };
