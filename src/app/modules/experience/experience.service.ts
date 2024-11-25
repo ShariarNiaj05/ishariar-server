@@ -20,6 +20,8 @@ const createExperienceIntoDB = async (req: Request) => {
     const { result: mediaResult, url: mediaUrl } =
       await ExperienceFileUploadOrUpdateIntoR2(media, 'experience');
 
+    const newExperience = await ExperienceModel.create(req);
+
     return newExperience;
   } catch (error) {
     console.error('Error in create  experience IntoDB:', error);
