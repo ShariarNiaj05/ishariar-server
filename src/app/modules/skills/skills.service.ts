@@ -24,7 +24,7 @@ const createSkillIntoDB = async (req: Request) => {
     const media = await Promise.all(
       mediaFiles.map(async (file: any) => {
         const { result: mediaResult, url: mediaUrl } =
-          await SkillsFileUploadOrUpdateIntoR2(file, 'experiences');
+          await SkillsFileUploadOrUpdateIntoR2(file, 'skills');
 
         return {
           url: mediaUrl,
