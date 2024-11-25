@@ -7,19 +7,28 @@ import { ExperienceFileUploadOrUpdateIntoR2 } from './experience.utils';
 const createExperienceIntoDB = async (req: Request) => {
   try {
     //@ts-expect-error: possible null error
-    const media = req.files['media'] ?? null;
+    const mediaFiles = req.files['media'] ?? null;
 
-    if (!media) {
+    if (!mediaFiles || !Array.isArray(mediaFiles)) {
       throw new AppError(
         httpStatus.BAD_REQUEST,
         'No mediaLinks has been selected. Please choose a mediaLinks file to proceed.',
       );
     }
 
-    // upload to r2 storage
-    const { result: mediaResult, url: mediaUrl } =
-      await ExperienceFileUploadOrUpdateIntoR2(media, 'experiences');
-    console.log({ mediaResult }, { mediaUrl });
+    // Upload each media file to R2 storage
+    const media = await Promise.all(
+      mediaFiles.map(async (file) => {
+        const { result: mediaResult, url: mediaUrl } =
+          await ExperienceFileUploadOrUpdateIntoR2(file, 'experiences');
+
+        return {
+          url: mediaUrl,
+          key: mediaResult?.Key,
+        };
+      }),
+    );
+
     const uploadData = {
       title: req.body.title,
       company: req.body.company,
@@ -29,12 +38,7 @@ const createExperienceIntoDB = async (req: Request) => {
       description: req.body.description,
       responsibilities: req.body.responsibilities,
       keyInitiatives: req.body.keyInitiatives,
-      media: [
-        {
-          url: mediaUrl,
-          key: mediaResult?.Key,
-        },
-      ],
+      media: media,
     };
     const newExperience = await ExperienceModel.create(uploadData);
 
