@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
-import { BlogsService, ExperienceService } from './blogs.service';
+import { BlogsService } from './blogs.service';
 import AppError from '../../errors/AppError';
 
 const createBlog = catchAsync(async (req: Request, res: Response) => {
@@ -32,4 +32,4 @@ const getBlogs = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-export const BlogsController = { createExperience, getExperiences };
+export const BlogsController = { createBlog, getBlogs };
