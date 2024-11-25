@@ -3,7 +3,7 @@ import { Types } from 'mongoose';
 export type IProjects = {
   name: string;
   description: string;
-  techStack: string[] | Types.ObjectId[];
+  techStack: Types.ObjectId[] | string[];
   features: string[];
   role: string;
   challengesSolved: string[];

@@ -7,7 +7,7 @@ import AppError from '../../errors/AppError';
 import { ProjectsFileUploadOrUpdateIntoR2 } from './projects.utils';
 
 const getAllProjects = async () => {
-  return await ProjectsModel.find();
+  return await ProjectsModel.find().populate('techStack');
 };
 
 const getProjectById = async (id: string) => {
