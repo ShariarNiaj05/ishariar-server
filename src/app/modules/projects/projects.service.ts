@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request } from 'express';
 import { IProjects } from './projects.interface';
 import { ProjectsModel } from './projects.model';
@@ -36,7 +37,7 @@ const addProject = async (req: Request) => {
   }
   // Upload each media file to R2 storage
   const mediaLinks = await Promise.all(
-    mediaFiles.map(async (file) => {
+    mediaFiles.map(async (file: any) => {
       const { result: mediaLinksResult, url: mediaLinksUrl } =
         await ProjectsFileUploadOrUpdateIntoR2(file, 'projects');
 

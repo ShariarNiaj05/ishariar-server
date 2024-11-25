@@ -48,4 +48,14 @@ const createExperienceIntoDB = async (req: Request) => {
   }
 };
 
-export const ExperienceService = { createExperienceIntoDB };
+const getAllExperiences = async () => {
+  try {
+    const experiences = await ExperienceModel.find();
+    return experiences;
+  } catch (error) {
+    console.error('Error in fetching experiences:', error);
+    throw error;
+  }
+};
+
+export const ExperienceService = { createExperienceIntoDB, getAllExperiences };
