@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { IExperience } from './experience.interface';
+import { IExperience } from './blogs.interface';
 
 const experienceSchema: Schema<IExperience> = new mongoose.Schema(
   {

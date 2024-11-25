@@ -1,5 +1,5 @@
 import express, { NextFunction, Request, Response } from 'express';
-import { ExperienceController } from './experience.controller';
+import { ExperienceController } from './blogs.controller';
 import { FileUploadConfig } from '../../config/multer';
 
 const router = express.Router();
@@ -17,4 +17,4 @@ router.post(
 
 router.get('/', ExperienceController.getExperiences);
 
-export const ExperienceRoutes = router;
+export const BlogsRoutes = router;
