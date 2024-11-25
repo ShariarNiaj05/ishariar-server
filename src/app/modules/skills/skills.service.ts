@@ -18,16 +18,15 @@ const createSkillIntoDB = async (req: Request) => {
       );
     }
 
-    // Upload files to R2 storage
+    // Upload each media file to R2 storage
     const media = await Promise.all(
       mediaFiles.map(async (file: any) => {
-        const { result, url } = await ExperienceFileUploadOrUpdateIntoR2(
-          file,
-          'skills',
-        );
+        const { result: mediaResult, url: mediaUrl } =
+          await ExperienceFileUploadOrUpdateIntoR2(file, 'experiences');
+
         return {
-          url,
-          key: result?.Key,
+          url: mediaUrl,
+          key: mediaResult?.Key,
         };
       }),
     );
@@ -39,7 +38,7 @@ const createSkillIntoDB = async (req: Request) => {
       media,
     };
 
-    const newSkill = await SkillModel.create(skillData);
+    const newSkill = await SkillsModel.create(skillData);
     return newSkill;
   } catch (error) {
     console.error('Error in createSkillIntoDB:', error);
