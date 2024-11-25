@@ -5,7 +5,7 @@ import httpStatus from 'http-status';
 import { ExperienceService } from './blogs.service';
 import AppError from '../../errors/AppError';
 
-const createExperience = catchAsync(async (req: Request, res: Response) => {
+const createBlog = catchAsync(async (req: Request, res: Response) => {
   try {
     const newProject = await ExperienceService.createExperienceIntoDB(req);
 
@@ -21,7 +21,7 @@ const createExperience = catchAsync(async (req: Request, res: Response) => {
   }
 });
 
-const getExperiences = catchAsync(async (req: Request, res: Response) => {
+const getBlogs = catchAsync(async (req: Request, res: Response) => {
   const experiences = await ExperienceService.getAllExperiences();
 
   sendResponse(res, {
