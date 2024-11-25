@@ -11,7 +11,12 @@ const experienceSchema: Schema<IExperience> = new mongoose.Schema(
     description: { type: String, required: true },
     responsibilities: { type: [String], required: true },
     keyInitiatives: { type: [String] },
-    media: { type: [String], required: true },
+    media: [
+      {
+        url: { type: String, required: true },
+        key: { type: String, required: true },
+      },
+    ],
   },
   {
     timestamps: true,
