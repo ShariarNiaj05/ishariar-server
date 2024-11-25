@@ -1,8 +1,8 @@
 import { Request } from 'express';
-import { ExperienceModel } from './blogs.model';
 import httpStatus from 'http-status';
 import AppError from '../../errors/AppError';
 import { ExperienceFileUploadOrUpdateIntoR2 } from './blogs.utils';
+import { BlogsModel } from './blogs.model';
 
 const createBlogsIntoDB = async (req: Request) => {
   try {
@@ -30,17 +30,17 @@ const createBlogsIntoDB = async (req: Request) => {
     );
 
     const uploadData = {
-      title: req.body.title,
-      company: req.body.company,
-      location: req.body.location,
-      startDate: req.body.startDate,
-      endDate: req.body.endDate,
-      description: req.body.description,
-      responsibilities: req.body.responsibilities,
-      keyInitiatives: req.body.keyInitiatives,
-      media: media,
+      // title: req.body.title,
+      // company: req.body.company,
+      // location: req.body.location,
+      // startDate: req.body.startDate,
+      // endDate: req.body.endDate,
+      // description: req.body.description,
+      // responsibilities: req.body.responsibilities,
+      // keyInitiatives: req.body.keyInitiatives,
+      // media: media,
     };
-    const newExperience = await ExperienceModel.create(uploadData);
+    const newExperience = await BlogsModel.create(uploadData);
 
     return newExperience;
   } catch (error) {
