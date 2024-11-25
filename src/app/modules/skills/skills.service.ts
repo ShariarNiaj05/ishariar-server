@@ -47,4 +47,4 @@ const createSkillIntoDB = async (req: Request) => {
   }
 };
 
-export const SkillsService = { getSkills };
+export const SkillsService = { getSkills, createSkillIntoDB };
