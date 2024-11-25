@@ -4,7 +4,7 @@ import httpStatus from 'http-status';
 import AppError from '../../errors/AppError';
 import { ExperienceFileUploadOrUpdateIntoR2 } from './blogs.utils';
 
-const createExperienceIntoDB = async (req: Request) => {
+const createBlogsIntoDB = async (req: Request) => {
   try {
     //@ts-expect-error: possible null error
     const mediaFiles = req.files['media'] ?? null;
@@ -48,14 +48,14 @@ const createExperienceIntoDB = async (req: Request) => {
   }
 };
 
-const getAllExperiences = async () => {
-  try {
-    const experiences = await ExperienceModel.find();
-    return experiences;
-  } catch (error) {
-    console.error('Error in fetching experiences:', error);
-    throw error;
-  }
+const getAllBlogs = async () => {
+  // try {
+  //   const experiences = await ExperienceModel.find();
+  //   return experiences;
+  // } catch (error) {
+  //   console.error('Error in fetching experiences:', error);
+  //   throw error;
+  // }
 };
 
-export const BlogsService = { createExperienceIntoDB, getAllExperiences };
+export const BlogsService = { createBlogsIntoDB, getAllBlogs };
