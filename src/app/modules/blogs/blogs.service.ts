@@ -17,7 +17,7 @@ const createBlogsIntoDB = async (req: Request) => {
     }
 
     // Upload each media file to R2 storage
-    const media = await Promise.all(
+    const coverImage = await Promise.all(
       mediaFiles.map(async (file) => {
         const { result: mediaResult, url: mediaUrl } =
           await ExperienceFileUploadOrUpdateIntoR2(file, 'experiences');
