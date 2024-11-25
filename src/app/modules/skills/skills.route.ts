@@ -1,6 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 import { SkillsController } from './skills.controller';
-import { FileUploadConfig } from '../../config/multer';
+// import { FileUploadConfig } from '../../config/multer';
 
 const router = express.Router();
 
