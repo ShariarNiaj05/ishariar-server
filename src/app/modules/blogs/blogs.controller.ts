@@ -32,4 +32,4 @@ const getExperiences = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-export const ExperienceController = { createExperience, getExperiences };
+export const BlogsController = { createExperience, getExperiences };
