@@ -7,9 +7,9 @@ import { BlogsModel } from './blogs.model';
 const createBlogsIntoDB = async (req: Request) => {
   try {
     //@ts-expect-error: possible null error
-    const mediaFiles = req.files['media'] ?? null;
+    const coverImageFiles = req.files['coverImage'] ?? null;
 
-    if (!mediaFiles || !Array.isArray(mediaFiles)) {
+    if (!coverImageFiles || !Array.isArray(coverImageFiles)) {
       throw new AppError(
         httpStatus.BAD_REQUEST,
         'No mediaLinks has been selected. Please choose a mediaLinks file to proceed.',
@@ -18,7 +18,7 @@ const createBlogsIntoDB = async (req: Request) => {
 
     // Upload each media file to R2 storage
     const coverImage = await Promise.all(
-      mediaFiles.map(async (file) => {
+      coverImageFiles.map(async (file) => {
         const { result: mediaResult, url: mediaUrl } =
           await ExperienceFileUploadOrUpdateIntoR2(file, 'experiences');
 
@@ -38,7 +38,7 @@ const createBlogsIntoDB = async (req: Request) => {
       // description: req.body.description,
       // responsibilities: req.body.responsibilities,
       // keyInitiatives: req.body.keyInitiatives,
-      // media: media,
+      coverImage: coverImage,
     };
     const newExperience = await BlogsModel.create(uploadData);
 
