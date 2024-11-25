@@ -34,6 +34,18 @@ const addProject = async (req: Request) => {
       'No demonstration has been selected. Please choose a demonstration to proceed.',
     );
   }
+  // Upload each media file to R2 storage
+  const mediaLinks = await Promise.all(
+    mediaFiles.map(async (file) => {
+      const { result: mediaLinksResult, url: mediaLinksUrl } =
+        await ProjectsFileUploadOrUpdateIntoR2(file, 'experiences');
+
+      return {
+        url: mediaLinksUrl,
+        key: mediaLinksResult?.Key,
+      };
+    }),
+  );
 
   // upload to r2 storage
   const { result: mediaLinksResult, url: mediaLinksUrl } =
