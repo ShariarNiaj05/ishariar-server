@@ -58,4 +58,4 @@ const getAllExperiences = async () => {
   }
 };
 
-export const ExperienceService = { createExperienceIntoDB, getAllExperiences };
+export const BlogsService = { createExperienceIntoDB, getAllExperiences };
