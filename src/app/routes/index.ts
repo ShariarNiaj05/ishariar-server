@@ -4,6 +4,7 @@ import { UserRoutes } from '../modules/User/user.route';
 import { ExperienceRoutes } from '../modules/experience/experience.route';
 import { ProjectsRoutes } from '../modules/projects/projects.route';
 import { SkillsRoutes } from '../modules/skills/skills.route';
+import { BlogsRoutes } from '../modules/blogs/blogs.route';
 
 type TModuleRoutes = {
   path: string;
@@ -33,14 +34,10 @@ const moduleRoutes: TModuleRoutes[] = [
     path: '/skills',
     route: SkillsRoutes,
   },
-  /*{
-    path: '/blogs',
-    route: CategoryRoutes,
-  },
   {
-    path: '/skills',
-    route: CategoryRoutes,
-  }, */
+    path: '/blogs',
+    route: BlogsRoutes,
+  },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));

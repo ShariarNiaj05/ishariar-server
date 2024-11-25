@@ -1,17 +1,17 @@
-export type ISkill = {
-  name: string;
-  category:
-    | 'Language'
-    | 'Backend'
-    | 'Frontend'
-    | 'APIs'
-    | 'Tools'
-    | 'Others'
-    | 'Interpersonal';
-  media: [
-    {
-      url: string;
-      key: string;
-    },
-  ];
+export type IBlog = {
+  title: string;
+  content: string;
+  coverImage: {
+    url: string;
+    key: string;
+  };
+  status: 'Draft' | 'Published';
+  views: number;
+  likes: number;
+  comments?: {
+    name: string;
+    email: string;
+    comment: string;
+    date: Date;
+  }[];
 };
