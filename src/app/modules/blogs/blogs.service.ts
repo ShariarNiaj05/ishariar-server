@@ -1,8 +1,8 @@
 import { Request } from 'express';
 import httpStatus from 'http-status';
 import AppError from '../../errors/AppError';
-import { ExperienceFileUploadOrUpdateIntoR2 } from './blogs.utils';
 import { BlogsModel } from './blogs.model';
+import { BlogsFileUploadOrUpdateIntoR2 } from './blogs.utils';
 
 const createBlogsIntoDB = async (req: Request) => {
   try {
@@ -20,7 +20,7 @@ const createBlogsIntoDB = async (req: Request) => {
     const coverImage = await Promise.all(
       coverImageFiles.map(async (file) => {
         const { result: mediaResult, url: mediaUrl } =
-          await ExperienceFileUploadOrUpdateIntoR2(file, 'blogs');
+          await BlogsFileUploadOrUpdateIntoR2(file, 'blogs');
 
         return {
           url: mediaUrl,
