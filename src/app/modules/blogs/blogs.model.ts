@@ -18,10 +18,10 @@ const blogSchema: Schema<IBlog> = new mongoose.Schema(
     likes: { type: Number, default: 0 },
     comments: [
       {
-        name: { type: String, required: true },
-        email: { type: String, required: true },
-        comment: { type: String, required: true },
-        date: { type: Date, required: true },
+        name: { type: String },
+        email: { type: String },
+        comment: { type: String },
+        date: { type: Date },
       },
     ],
   },
