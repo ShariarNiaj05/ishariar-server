@@ -20,7 +20,7 @@ const createBlogsIntoDB = async (req: Request) => {
     const coverImage = await Promise.all(
       coverImageFiles.map(async (file) => {
         const { result: mediaResult, url: mediaUrl } =
-          await ExperienceFileUploadOrUpdateIntoR2(file, 'experiences');
+          await ExperienceFileUploadOrUpdateIntoR2(file, 'blogs');
 
         return {
           url: mediaUrl,
