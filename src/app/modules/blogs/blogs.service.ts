@@ -38,6 +38,10 @@ const createBlogsIntoDB = async (req: Request) => {
       // description: req.body.description,
       // responsibilities: req.body.responsibilities,
       // keyInitiatives: req.body.keyInitiatives,
+      title: req.body.title,
+      content: req.body.content,
+      status: req.body.status,
+
       coverImage: coverImage,
     };
     const newExperience = await BlogsModel.create(uploadData);
