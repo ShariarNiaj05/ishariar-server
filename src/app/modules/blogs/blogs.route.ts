@@ -11,7 +11,7 @@ router.post(
     const parsedData = JSON.parse(req.body.data || '{}');
     req.body = { ...parsedData, ...req.body };
     req.body = JSON.parse(req.body.data);
-    return BlogsController.getBlogs(req, res, next);
+    return BlogsController.createBlog(req, res, next);
   },
 );
 
