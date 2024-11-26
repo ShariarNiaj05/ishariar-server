@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { IBlog } from '../skills/skills.interface';
+import { IBlog } from './blogs.interface';
 
 const blogSchema: Schema<IBlog> = new mongoose.Schema(
   {

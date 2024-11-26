@@ -1,16 +1,17 @@
-export type IExperience = {
+export type IBlog = {
   title: string;
-  company: string;
-  location: string;
-  startDate: Date;
-  media: [
-    {
-      url: string;
-      key: string;
-    },
-  ];
-  endDate?: Date;
-  description: string;
-  responsibilities: string[];
-  keyInitiatives?: string[];
+  content: string;
+  coverImage: {
+    url: string;
+    key: string;
+  };
+  status: 'Draft' | 'Published';
+  views: number;
+  likes: number;
+  comments?: {
+    name: string;
+    email: string;
+    comment: string;
+    date: Date;
+  }[];
 };
