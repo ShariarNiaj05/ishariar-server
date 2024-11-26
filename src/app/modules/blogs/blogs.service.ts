@@ -29,6 +29,8 @@ const createBlogsIntoDB = async (req: Request) => {
       }),
     );
 
+    console.log('coverImage', coverImage);
+
     const uploadData = {
       // title: req.body.title,
       // company: req.body.company,
