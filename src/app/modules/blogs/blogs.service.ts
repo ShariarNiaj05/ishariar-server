@@ -41,7 +41,7 @@ const createBlogsIntoDB = async (req: Request) => {
       title: req.body.title,
       content: req.body.content,
       status: req.body.status,
-
+      comments: [],
       coverImage: coverImage,
     };
     const newExperience = await BlogsModel.create(uploadData);
