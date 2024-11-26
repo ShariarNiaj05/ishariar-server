@@ -31,9 +31,6 @@ export const ExperienceFileUploadOrUpdateIntoR2 = async (
     BucketName,
     finalResultKey,
   );
-
-  console.log('previewUrl', previewUrl);
-
   // remove file from local
   if (result) {
     fs.unlinkSync(file.path);
