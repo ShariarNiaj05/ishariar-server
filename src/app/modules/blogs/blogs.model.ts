@@ -5,10 +5,12 @@ const blogSchema: Schema<IBlog> = new mongoose.Schema(
   {
     title: { type: String, required: true },
     content: { type: String, required: true },
-    coverImage: {
-      url: { type: String, required: true },
-      key: { type: String, required: true },
-    },
+    coverImage: [
+      {
+        url: { type: String, required: true },
+        key: { type: String, required: true },
+      },
+    ],
     status: {
       type: String,
       enum: ['Draft', 'Published'],
